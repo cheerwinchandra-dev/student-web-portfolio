@@ -1,0 +1,23 @@
+{
+  "name": "cheerwin-portfolio",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Cheerwin Chandra's portfolio with a secure contact inbox and privacy compliance, ready for GitHub + Vercel + Neon Postgres.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "hash-password": "node scripts/hash-password.mjs",
+    "prebuild": "node -e \"const fs=require('fs');const m=['api/router.js','lib/app.js','public/index.html','public/privacy.html','scripts/build-html.mjs','vercel.json'].filter(f=>!fs.existsSync(f));if(m.length){console.error('\\nSome files or folders are missing from your GitHub repository (missing: '+m.join(', ')+').\\nUpload the folders api, lib, public and scripts themselves (not only the files inside them), plus package.json, package-lock.json and vercel.json, all at the top level of the repository. See README, step 1.\\n');process.exit(1)}\"",
+    "build": "node scripts/build-html.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0",
+    "@vercel/functions": "3.9.9"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}

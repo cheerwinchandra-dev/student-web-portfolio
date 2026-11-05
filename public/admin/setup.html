@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Password setup · Cheerwin Chandra</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/admin.css">
+<script type="module" src="/js/setup.js"></script>
+</head>
+<body>
+<div class="auth">
+  <p class="auth__word" aria-hidden="true">SETUP</p>
+  <form class="auth__card auth__card--wide" id="setup-form" novalidate>
+    <a class="auth__back" href="/">← Back to portfolio</a>
+    <h1 class="auth__title">Admin password setup</h1>
+    <p class="auth__sub">Creates the two values Vercel needs. Everything happens in this browser; nothing is sent anywhere.</p>
+    <div class="field">
+      <label for="su-pass">New admin password</label>
+      <input id="su-pass" type="password" autocomplete="new-password" maxlength="128" required>
+    </div>
+    <div class="field">
+      <label for="su-pass2">Type it again</label>
+      <input id="su-pass2" type="password" autocomplete="new-password" maxlength="128" required>
+    </div>
+    <p class="hint">At least 10 characters with letters and numbers, not your username. Use a password that isn’t written anywhere else, such as a GitHub README.</p>
+    <button class="btn btn--block" type="submit"><span>Create values</span><span class="spinner" aria-hidden="true"></span></button>
+    <p class="auth__msg" id="su-msg" role="alert"></p>
+    <div id="su-out" hidden>
+      <div class="field">
+        <label for="su-hash">ADMIN_PASSWORD_HASH</label>
+        <textarea id="su-hash" rows="3" readonly></textarea>
+        <button class="tbtn" type="button" data-copy="su-hash">Copy</button>
+      </div>
+      <div class="field">
+        <label for="su-cron">CRON_SECRET</label>
+        <input id="su-cron" type="text" readonly>
+        <button class="tbtn" type="button" data-copy="su-cron">Copy</button>
+      </div>
+      <ol class="steps-list">
+        <li>In Vercel, open your project → <b>Settings</b> → <b>Environment Variables</b>.</li>
+        <li>Add <b>ADMIN_PASSWORD_HASH</b> and <b>CRON_SECRET</b> with the values above (all environments).</li>
+        <li>Open <b>Deployments</b> → the latest one → <b>⋯</b> → <b>Redeploy</b>.</li>
+        <li>Sign in at <b>/login</b> with username <b>cheerwin</b> and the password you just typed.</li>
+        <li>Open <b>Security</b> and turn on <b>two-step sign-in</b> with an authenticator app. Your inbox opens once it is on.</li>
+      </ol>
+    </div>
+    <p class="auth__legal"><a href="/privacy">Privacy Policy</a><span aria-hidden="true">·</span><a href="/terms">Terms of use</a></p>
+  </form>
+</div>
+</body>
+</html>
